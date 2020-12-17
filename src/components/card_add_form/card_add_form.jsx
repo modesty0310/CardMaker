@@ -10,6 +10,7 @@ const CardAddForm = ({ onAdd }) => {
   const titleRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
+  const formRef = useRef();
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -25,12 +26,12 @@ const CardAddForm = ({ onAdd }) => {
       fileName : "",
       fileURL : "", 
     };
-
     onAdd(card);
+    formRef.current.reset();
   };
 
   return (
-    <form className={styles.form}>
+    <form ref={formRef} className={styles.form}>
       <input ref={nameRef} className={styles.input} type="text" name='name' placeholder='Name'/>
       <input  ref={companyRef} className={styles.input} type="text" name='company' placeholder='Company'/>
       <select ref={themRef} className={styles.select} name="them" placeholder='them'>
