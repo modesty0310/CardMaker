@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 
 
-function App({authService}) {
+function App({FileInput, authService}) {
   return (
     <div className={styles.app}>
       <Router>
@@ -18,7 +18,7 @@ function App({authService}) {
             <Login authService={authService}/>
           </Route>
           <Route path='/maker'>
-            <Maker authService={authService}/>
+            <Maker FileInput={FileInput} authService={authService}/>
           </Route>
         </Switch>
       </Router>

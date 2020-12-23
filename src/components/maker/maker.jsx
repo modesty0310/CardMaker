@@ -6,7 +6,7 @@ import Header from '../header/header';
 import Preview from '../preview/preview';
 import styles from './maker.module.css'
 
-const Maker = ({authService}) => {
+const Maker = ({FileInput, authService}) => {
 const [cards, setCards] = useState({
   1: {
       id: '1',
@@ -16,7 +16,7 @@ const [cards, setCards] = useState({
       title: 'front-end',
       email: 'rlatprua4@gmail.com',
       message: 'gogogo',
-      fileName: 'mode',
+      fileName: null,
       fileURL: null
     },
     2:{
@@ -27,7 +27,7 @@ const [cards, setCards] = useState({
       title: 'front-end',
       email: 'rlatprua4@gmail.com',
       message: 'gogogo',
-      fileName: 'mode',
+      fileName: null,
       fileURL: 'mode.png'
     },
     3:{
@@ -38,7 +38,7 @@ const [cards, setCards] = useState({
       title: 'front-end',
       email: 'rlatprua4@gmail.com',
       message: 'gogogo',
-      fileName: 'mode',
+      fileName: null,
       fileURL: null
     },
 });
@@ -68,8 +68,6 @@ const deleteCard = (card) => {
 };
 
 useEffect(() => {
-  console.log(cards);
-  console.log(cards['1']);
   authService.onAuthChange((user) => {
     if(!user) {
       history.push('/')
@@ -81,7 +79,7 @@ useEffect(() => {
     <section className={styles.maker}>
       <Header onLogout={onLogout} />
       <div className={styles.containner}>
-          <Editor cards={cards} onAdd={createOrUpdateCard} updateCard={createOrUpdateCard} deleteCard={deleteCard} />
+          <Editor FileInput={FileInput} cards={cards} onAdd={createOrUpdateCard} updateCard={createOrUpdateCard} deleteCard={deleteCard} />
           <Preview cards={cards} />
       </div>
       <Footer />
