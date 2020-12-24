@@ -21,7 +21,6 @@ const CardAddForm = ({ FileInput, onAdd }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(nameRef.current.value);
     const card = {
       id: Date.now(),
       name : nameRef.current.value || "", 
